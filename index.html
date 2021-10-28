@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    /> -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Colorado Streamflow</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer="true"></script>
+    <link rel="stylesheet" href="stylev6.css" />
+    <script src="scriptv6.js" defer="true"></script>
   </head>
   <body>
-    <h1>Current streamflow across Colorado</h1>
-    <div id="map"></div>
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_jfREM8LZtRfkIgVKdOH_0uS2C47cinU&callback=initMap"
-    ></script>
+    <div id="page-container">
+      <h1>Current streamflow across Colorado</h1>
+      <div id="map"></div>
+      <script
+        async
+        defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_jfREM8LZtRfkIgVKdOH_0uS2C47cinU&callback=initMap"
+      ></script>
+      <div id="jumpButtons">
+        <button id="SS">Jump to Strontia</button>
+        <button id="CM">Jump to Cheesman</button>
+        <button id="RT">Jump to Roberts Tunnel</button>
+        <button id="GR">Jump to Gross</button>
+        <button id="DL">Jump to Dillon</button>
+      </div>
+      <footer id="footer">
+        <a target="_blank" href="https://icons8.com/icon/13101/water">Water</a>
+        and
+        <a target="_blank" href="https://icons8.com/icon/19161/sort-down"
+          >Sort Down</a
+        >
+        icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+      </footer>
+    </div>
   </body>
 </html>

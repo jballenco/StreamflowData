@@ -1,0 +1,314 @@
+[
+  {
+    "name": "Gross Reservoir",
+    "abbrev": "GRWTRFAC",
+    "coordinates": { "lat": 39.94829051193141, "lng": -105.35810848861102 },
+    "content": "<img style='height:80px;width:auto;' src='grPic.png'/><h3>Gross Reservoir</h3><h5>Capacity:&emsp;41,811 acre-ft<br>Spillway Elevation:&emsp;7282 ft.<br>Water Right Date:&emsp;May 10, 1945 </h5>"
+  },
+  {
+    "name": "S. Bldr. Creek Div. near Eldorado",
+    "abbrev": "BOSDELCO",
+    "coordinates": { "lat": 39.932589, "lng": -105.30819 },
+    "link": "https://dwr.state.co.us/tools/stations/BOSDELCO"
+  },
+  {
+    "name": "S. Platte below Cheesman",
+    "abbrev": "PLACHECO",
+    "coordinates": { "lat": 39.209275, "lng": -105.268136 },
+    "link": "https://dwr.state.co.us/tools/stations/PLACHECO"
+  },
+  {
+    "name": "S. Platte at S. Platte",
+    "abbrev": "PLASPLCO",
+    "coordinates": { "lat": 39.40887, "lng": -105.169876 },
+    "link": "https://dwr.state.co.us/tools/stations/PLASPLCO"
+  },
+  {
+    "name": "Moffat Tunnel East portal",
+    "abbrev": "MOFTUNCO",
+    "coordinates": { "lat": 39.901866, "lng": -105.64542 },
+    "link": "https://dwr.state.co.us/tools/stations/MOFTUNCO"
+  },
+  {
+    "name": "S. Bldr. Creek at Pinecliffe",
+    "abbrev": "BOCPINCO",
+    "coordinates": { "lat": 39.931659, "lng": -105.422985 },
+    "link": "https://dwr.state.co.us/tools/stations/BOCPINCO"
+  },
+  {
+    "name": "S. Bldr. Creek below Gross Res.",
+    "abbrev": "BOCBGRCO",
+    "coordinates": { "lat": 39.938324, "lng": -105.347953 },
+    "link": "https://dwr.state.co.us/tools/stations/BOCBGRCO"
+  },
+  {
+    "name": "S. Bldr. Creek near Eldorado Springs",
+    "abbrev": "BOCELSCO",
+    "coordinates": { "lat": 39.931597, "lng": -105.30499 },
+    "link": "https://dwr.state.co.us/tools/stations/BOCELSCO"
+  },
+  {
+    "name": "Big Lake Ditch near Williams Fork",
+    "abbrev": "BIGLKDCO",
+    "coordinates": { "lat": 39.972277, "lng": -106.161152 },
+    "link": "https://dwr.state.co.us/tools/stations/BIGLKDCO"
+  },
+  {
+    "name": "Ralston Creek above Ralston Res.",
+    "abbrev": "RALCRKCO",
+    "coordinates": { "lat": 39.82125, "lng": -105.261607 },
+    "link": "https://dwr.state.co.us/tools/stations/RALCRKCO"
+  },
+  {
+    "name": "Ralston Creek below Ralston Res.",
+    "abbrev": "RALBLWCO",
+    "coordinates": { "lat": 39.828864, "lng": -105.231522 },
+    "link": "https://dwr.state.co.us/tools/stations/RALBLWCO"
+  },
+  {
+    "name": "S. Platte below Chatfield",
+    "abbrev": "PLACHACO",
+    "coordinates": { "lat": 39.562682, "lng": -105.059753 },
+    "link": "https://dwr.state.co.us/tools/stations/PLACHACO"
+  },
+  {
+    "name": "CPW Fish Hatchery",
+    "abbrev": "CHAFISCO",
+    "coordinates": { "lat": 39.558954, "lng": -105.054116 },
+    "link": "https://dwr.state.co.us/tools/stations/CHAFISCO"
+  },
+  {
+    "name": "Last Chance Ditch 2",
+    "abbrev": "LC2DITCO",
+    "coordinates": { "lat": 39.568662, "lng": -105.045357 },
+    "link": "https://dwr.state.co.us/tools/stations/LC2DITCO"
+  },
+  {
+    "name": "Nevada Ditch",
+    "abbrev": "NEVDITCO",
+    "coordinates": { "lat": 39.568671, "lng": -105.045345 },
+    "link": "https://dwr.state.co.us/tools/stations/NEVDITCO"
+  },
+  {
+    "name": "Sand Creek above Burling. Ditch",
+    "abbrev": "SANABDCO",
+    "coordinates": { "lat": 39.810073, "lng": -104.950428 },
+    "link": "https://dwr.state.co.us/tools/stations/SANABDCO"
+  },
+  {
+    "name": "Tarryall Creek at Borden Ditch",
+    "abbrev": "TARBORCO",
+    "coordinates": { "lat": 39.286865, "lng": -105.695731 },
+    "link": "https://dwr.state.co.us/tools/stations/TARBORCO"
+  },
+  {
+    "name": "Burlington Canal",
+    "abbrev": "BURCANCO",
+    "coordinates": { "lat": 39.811677, "lng": -104.949749 },
+    "link": "https://dwr.state.co.us/tools/stations/BURCANCO"
+  },
+  {
+    "name": "N. Fork S. Platte at Bailey",
+    "abbrev": "PLABAICO",
+    "coordinates": { "lat": 39.404767, "lng": -105.473828 },
+    "link": "https://dwr.state.co.us/tools/stations/PLABAICO"
+  },
+  {
+    "name": "S. Platte at Denver",
+    "abbrev": "PLADENCO",
+    "coordinates": { "lat": 39.759456, "lng": -105.004003 },
+    "link": "https://dwr.state.co.us/tools/stations/PLADENCO"
+  },
+  {
+    "name": "S. Platte at 64th ave",
+    "abbrev": "PLASIXCO",
+    "coordinates": { "lat": 39.812212, "lng": -104.958325 },
+    "link": "https://dwr.state.co.us/tools/stations/PLASIXCO"
+  },
+  {
+    "name": "Roberts Tunnel East portal",
+    "abbrev": "ROBTUNCO",
+    "coordinates": { "lat": 39.46163, "lng": -105.676696 },
+    "link": "https://dwr.state.co.us/tools/stations/ROBTUNCO"
+  },
+  {
+    "name": "Blue River below Dillon",
+    "abbrev": "BLUDILCO",
+    "coordinates": { "lat": 39.625552, "lng": -106.066424 },
+    "link": "https://dwr.state.co.us/tools/stations/BLUDILCO"
+  },
+  {
+    "name": "Ten Mile Creek at Frisco",
+    "abbrev": "TENFRICO",
+    "coordinates": { "lat": 39.575267, "lng": -106.110583 },
+    "link": "https://dwr.state.co.us/tools/stations/TENFRICO"
+  },
+  {
+    "name": "Snake River at Keystone",
+    "abbrev": "SNAKEYCO",
+    "coordinates": { "lat": 39.606735, "lng": -105.951703 },
+    "link": "https://dwr.state.co.us/tools/stations/SNAKEYCO"
+  },
+  {
+    "name": "Blue River at Dillon",
+    "abbrev": "BLUNDICO",
+    "coordinates": { "lat": 39.566662, "lng": -106.049479 },
+    "link": "https://dwr.state.co.us/tools/stations/BLUNDICO"
+  },
+  {
+    "name": "Colorado River at Kremmling",
+    "abbrev": "COLKRECO",
+    "coordinates": { "lat": 40.036654, "lng": -106.44004 },
+    "link": "https://dwr.state.co.us/tools/stations/COLKRECO"
+  },
+  {
+    "name": "Muddy Creek below Wolford",
+    "abbrev": "MUDKRECO",
+    "coordinates": { "lat": 40.108599, "lng": -106.413936 },
+    "link": "https://dwr.state.co.us/tools/stations/MUDKRECO"
+  },
+  {
+    "name": "Williams Fork below Williams Fork Reservoir",
+    "abbrev": "WILFORCO",
+    "coordinates": { "lat": 40.035931, "lng": -106.205024 },
+    "link": "https://dwr.state.co.us/tools/stations/WILFORCO"
+  },
+  {
+    "name": "Colorado River at Dotsero",
+    "abbrev": "COLDOTCO",
+    "coordinates": { "lat": 39.644616, "lng": -107.078023 },
+    "link": "https://dwr.state.co.us/tools/stations/COLDOTCO"
+  },
+  {
+    "name": "Colorado River near Cameo",
+    "abbrev": "COLCAMCO",
+    "coordinates": { "lat": 39.239151, "lng": -108.266208 },
+    "link": "https://dwr.state.co.us/tools/stations/COLCAMCO"
+  },
+  {
+    "name": "Dillon Reservoir",
+    "abbrev": "DILRESCO",
+    "coordinates": { "lat": 39.618306, "lng": -106.065579 },
+    "link": "https://dwr.state.co.us/tools/stations/DILRESCO"
+  },
+  {
+    "name": "N. Fork S. Platte at Grant",
+    "abbrev": "PLAGRACO",
+    "coordinates": { "lat": 39.458018, "lng": -105.659179 },
+    "link": "https://dwr.state.co.us/tools/stations/PLAGRACO"
+  },
+  {
+    "name": "S. Platte below Antero Reservoir",
+    "abbrev": "PLAANTCO",
+    "coordinates": { "lat": 38.993886, "lng": -105.894583 },
+    "link": "https://dwr.state.co.us/tools/stations/PLAANTCO"
+  },
+  {
+    "name": "S. Platte above Eleven Mile Reservoir",
+    "abbrev": "PLAHARCO",
+    "coordinates": { "lat": 38.967805, "lng": -105.581544 },
+    "link": "https://dwr.state.co.us/tools/stations/PLAHARCO"
+  },
+  {
+    "name": "S. Platte near Lake George",
+    "abbrev": "PLAGEOCO",
+    "coordinates": { "lat": 38.905278, "lng": -105.473338 },
+    "link": "https://dwr.state.co.us/tools/stations/PLAGEOCO"
+  },
+  {
+    "name": "S. Platte above Cheesman Reservoir",
+    "abbrev": "SPACHECO",
+    "coordinates": { "lat": 39.162772, "lng": -105.31029 },
+    "link": "https://dwr.state.co.us/tools/stations/SPACHECO"
+  },
+  {
+    "name": "Conduit 26",
+    "abbrev": "COND26CO",
+    "coordinates": { "lat": 39.432714, "lng": -105.126593 },
+    "link": "https://dwr.state.co.us/tools/stations/COND26CO"
+  },
+  {
+    "name": "Aurora Intake at Strontia Res. To Rampart",
+    "abbrev": "AURSTRCO",
+    "coordinates": { "lat": 39.431804, "lng": -105.126255 },
+    "link": "https://dwr.state.co.us/tools/stations/AURSTRCO"
+  },
+  {
+    "name": "Conduit 20",
+    "abbrev": "COND20CO",
+    "coordinates": { "lat": 39.470207, "lng": -105.134811 },
+    "link": "https://dwr.state.co.us/tools/stations/COND20CO"
+  },
+  {
+    "name": "Last Chance Pump Station",
+    "abbrev": "LCPUMPCO",
+    "coordinates": { "lat": 39.484474, "lng": -105.104757 },
+    "link": "https://dwr.state.co.us/tools/stations/LCPUMPCO"
+  },
+  {
+    "name": "S. Platte at Waterton",
+    "abbrev": "PLAWATCO",
+    "coordinates": { "lat": 39.488332, "lng": -105.092773 },
+    "link": "https://dwr.state.co.us/tools/stations/PLAWATCO"
+  },
+  {
+    "name": "Chatfield Reservoir",
+    "abbrev": "CHARESCO",
+    "coordinates": { "lat": 39.557148, "lng": -105.062949 },
+    "link": "https://dwr.state.co.us/tools/stations/CHARESCO"
+  },
+  {
+    "name": "Colorado River below Grand Valley Div. Near Palisade",
+    "abbrev": "COLPALCO",
+    "coordinates": { "lat": 39.098593, "lng": -108.355103 },
+    "link": "https://dwr.state.co.us/tools/stations/COLPALCO"
+  },
+  {
+    "name": "S. Platte below Strontia Res.",
+    "abbrev": "PLASTRCO",
+    "coordinates": { "lat": 39.435068, "lng": -105.123774 },
+    "link": "https://dwr.state.co.us/tools/stations/PLASTRCO"
+  },
+  {
+    "name": "Strontia Reservoir",
+    "abbrev": "STRRESCO",
+    "coordinates": { "lat": 39.432175, "lng": -105.12757 },
+    "link": "https://dwr.state.co.us/tools/stations/STRRESCO"
+  },
+  {
+    "name": "Colorado River near Parshall",
+    "abbrev": "COLPARCO",
+    "coordinates": { "lat": 40.062764, "lng": -106.19254 },
+    "link": "https://dwr.state.co.us/tools/stations/COLPARCO"
+  },
+  {
+    "name": "Ralston-Clear Creek Canal",
+    "abbrev": "RCCDIVCO",
+    "coordinates": { "lat": 39.828808, "lng": -105.23255 },
+    "link": "https://dwr.state.co.us/tools/stations/RCCDIVCO"
+  },
+  {
+    "name": "Ralston-Clr. Crk. Canal rel. to Clr. Crk.",
+    "abbrev": "RCCRELCO",
+    "coordinates": { "lat": 39.77509, "lng": -105.193228 },
+    "link": "https://dwr.state.co.us/tools/stations/RCCRELCO"
+  },
+  {
+    "name": "Williams Fork near Parshall",
+    "abbrev": "WILPARCO",
+    "coordinates": { "lat": 40.000201, "lng": -106.18038 },
+    "link": "https://dwr.state.co.us/tools/stations/WILPARCO"
+  },
+  {
+    "name": "Williams Fork near Leal",
+    "abbrev": "WILLEACO",
+    "coordinates": { "lat": 39.833881, "lng": -106.056421 },
+    "link": "https://dwr.state.co.us/tools/stations/WILLEACO"
+  },
+  {
+    "name": "Williams Fork above Darling Creek near Leal",
+    "abbrev": "WILDARCO",
+    "coordinates": { "lat": 39.797199, "lng": -106.025655 },
+    "link": "https://dwr.state.co.us/tools/stations/WILDARCO"
+  }
+]
