@@ -13,9 +13,7 @@ const connStr =
 const connGageLink = "https://dwr.state.co.us/tools/stations/";
 
 let returnParamName = (gageAbv) =>
-  gageAbv === "DILRESCO" || gageAbv === "CHARESCO" || gageAbv === "STRRESCO"
-    ? "storage (AF)"
-    : "flow (cfs)";
+  gageAbv.includes("RESCO") ? "storage (AF)" : "flow (cfs)";
 
 for (let i = 1; i < gages.length; i++) {
   let request = new XMLHttpRequest();
