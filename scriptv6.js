@@ -2,39 +2,32 @@
 
 let map;
 
-////
 let request = new XMLHttpRequest();
 request.open("GET", "gageDatav6.json", false);
 request.send(null);
 let gages = JSON.parse(request.responseText);
 
 const connStr =
-  "https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrystation/?format=csv&dateFormat=spaceSepToMinutes&fields=measDateTime%2CmeasValue&abbrev=";
+  "https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrystation/?format=json&dateFormat=spaceSepToMinutes&fields=measDateTime%2CmeasValue&abbrev=";
 const connGageLink = "https://dwr.state.co.us/tools/stations/";
 
 let returnParamName = (gageAbv) =>
   gageAbv.includes("RESCO") ? "storage (AF)" : "flow (cfs)";
 
+$.ajaxSetup({ async: true });
 for (let i = 1; i < gages.length; i++) {
-  let request = new XMLHttpRequest();
-  // console.log(gages[i].abbrev);
-  request.open("GET", connStr + gages[i].abbrev + "&includeThirdParty=true");
-  request.onload = function () {
-    let responseStr = request.response;
-    let dataPoint = responseStr
-      .substring(responseStr.indexOf("measValue") + 11)
-      .split(",");
-    gages[i]["flow"] = Number(dataPoint[1]).toFixed(2);
-    gages[i]["date"] = dataPoint[0];
-    gages[i]["link"] = gages[i].link;
-    gages[i]["content"] = `<a href="${gages[i].link}" target="_blank">${
-      gages[i].name
-    }</a><h4>${gages[i].date} </h4><h5>${returnParamName(gages[i].abbrev)}: ${
-      gages[i].flow
-    }</h5>`;
-    // console.log(gages[i]);
-  };
-  request.send();
+  $.getJSON(
+    connStr + gages[i].abbrev + "&includeThirdParty=true",
+    function (d) {
+      gages[i]["flow"] = d.ResultList[0].measValue;
+      gages[i]["date"] = d.ResultList[0].measDateTime;
+      gages[i]["content"] = `<a href="${gages[i].link}" target="_blank">${
+        gages[i].name
+      }</a><h4>${gages[i].date} </h4><h5>${returnParamName(gages[i].abbrev)}: ${
+        gages[i].flow
+      }</h5>`;
+    }
+  );
 }
 
 function initMap() {
@@ -45,20 +38,11 @@ function initMap() {
     // mapTypeId: "terrain",
   };
   map = new google.maps.Map(document.getElementById("map"), options);
-
-  // let buttonNameArr = [("SS", "RT", "CM", "GR", "DL"),(39.432175,39.45941346491131,39.209275,39.938324),(-105.12757,-105.65996006068643)];
-  // buttonNameArr.forEach(function (r) {
-  //   console.log(r);
-  //   google.maps.event.addDomListener(
-  //     document.getElementById("SS"),
-  //     "click",
-  //     function () {
-  //       map.setCenter(new google.maps.LatLng(39.432175, -105.12757));
-  //       map.setZoom(14);
-  //     }
-  //   );
-  // });
-
+  let buttonData = [
+    [1, 2, 3],
+    [4, 5, 6],
+  ];
+  console.log(buttonData[0][1]);
   google.maps.event.addDomListener(
     document.getElementById("SS"),
     "click",
@@ -107,8 +91,6 @@ function initMap() {
       map: map,
       draggarble: false,
     });
-    // -------
-    console.log(gages[i]);
     if (gages[i].abbrev.includes("RESCO")) {
       marker.setIcon("greenTriangle.png");
     } else if (gages[i].abbrev.includes("WTRFAC")) {
@@ -116,11 +98,6 @@ function initMap() {
     } else {
       marker.setIcon("waterDrop.png");
     }
-    // gages[i].abbrev === "DILRESCO" ||
-    // gages[i].abbrev === "CHARESCO" ||
-    // gages[i].abbrev === "STRRESCO"
-    //   ? marker.setIcon("greenTriangle.png")
-    //   : marker.setIcon("waterDrop.png");
 
     google.maps.event.addListener(
       marker,
@@ -128,7 +105,6 @@ function initMap() {
       (function (marker, i) {
         return function () {
           var infowindow = new google.maps.InfoWindow();
-          console.log(gages[i].content);
           infowindow.setContent(gages[i].content);
           infowindow.open(map, marker);
         };
@@ -136,4 +112,3 @@ function initMap() {
     );
   }
 }
-// window.onload = initMap;
