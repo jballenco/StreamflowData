@@ -1,0 +1,101 @@
+[
+  {
+    "name": "Gross Reservoir",
+    "abbrev": "GRWTRFAC",
+    "coordinates": { "lat": 39.9482905119314, "lng": -105.358108488611 },
+    "Capacity": "41811",
+    "WaterRightDate": "5/10/1945",
+    "adminNumber": "34828.00000",
+    "SpillwayElevation": "7282"
+  },
+  {
+    "name": "Antero Reservoir",
+    "abbrev": "ANWTRFAC",
+    "coordinates": { "lat": 38.987683, "lng": -105.912021 },
+    "Capacity": "19881",
+    "WaterRightDate": "12/31/1929",
+    "adminNumber": "29219.00000",
+    "SpillwayElevation": "8942"
+  },
+  {
+    "name": "Eleven Mile Reservoir",
+    "abbrev": "EMWTRFAC",
+    "coordinates": { "lat": 38.916351, "lng": -105.503234 },
+    "Capacity": "97779",
+    "WaterRightDate": "7/10/1926",
+    "adminNumber": "27949.00000",
+    "SpillwayElevation": "8597"
+  },
+  {
+    "name": "Cheesman Reservoir",
+    "abbrev": "CMWTRFAC",
+    "coordinates": { "lat": 39.207223, "lng": -105.277547 },
+    "Capacity": "79064",
+    "WaterRightDate": "6/27/1889",
+    "adminNumber": "14423.00000",
+    "SpillwayElevation": "6842"
+  },
+  {
+    "name": "Strontia Springs Reservoir",
+    "abbrev": "SSWTRFAC",
+    "coordinates": { "lat": 39.429709, "lng": -105.130782 },
+    "Capacity": "7863",
+    "WaterRightDate": "3/21/1962",
+    "adminNumber": "47481.40987",
+    "SpillwayElevation": "6002"
+  },
+  {
+    "name": "Chatfield Reservoir",
+    "abbrev": "CFWTRFAC",
+    "coordinates": { "lat": 39.549958, "lng": -105.068712 },
+    "Capacity": "27076",
+    "WaterRightDate": "12/28/1977",
+    "adminNumber": "46748.00000",
+    "SpillwayElevation": "5432"
+  },
+  {
+    "name": "Marston Reservoir",
+    "abbrev": "MRWTRFAC",
+    "coordinates": { "lat": 39.628521, "lng": -105.06841 },
+    "Capacity": "20262",
+    "WaterRightDate": "4/1/1911",
+    "adminNumber": "22370.00000",
+    "SpillwayElevation": "5538"
+  },
+  {
+    "name": "Ralston Reservoir",
+    "abbrev": "RLWTRFAC",
+    "coordinates": { "lat": 39.83133, "lng": -105.244787 },
+    "Capacity": "10776",
+    "WaterRightDate": "1/1/1930",
+    "adminNumber": "29220.00000",
+    "SpillwayElevation": "6046"
+  },
+  {
+    "name": "Dillon Reservoir",
+    "abbrev": "DLWTRFAC",
+    "coordinates": { "lat": 39.613035, "lng": -106.05352 },
+    "Capacity": "257304",
+    "WaterRightDate": "6/24/1946",
+    "adminNumber": "35238.00000",
+    "SpillwayElevation": "9017"
+  },
+  {
+    "name": "Williams Fork Reservoir",
+    "abbrev": "WFWTRFAC",
+    "coordinates": { "lat": 40.019424, "lng": -106.214414 },
+    "Capacity": "96822",
+    "WaterRightDate": "11/10/1935",
+    "adminNumber": "39095.38998",
+    "SpillwayElevation": "7811"
+  },
+  {
+    "name": "Meadow Creek Reservoir",
+    "abbrev": "MCWTRFAC",
+    "coordinates": { "lat": 40.055152, "lng": -105.746807 },
+    "Capacity": "4520",
+    "WaterRightDate": "7/2/1932",
+    "adminNumber": "31259.30133",
+    "SpillwayElevation": "9995"
+  }
+]

@@ -1,11 +1,5 @@
 [
   {
-    "name": "Gross Reservoir",
-    "abbrev": "GRWTRFAC",
-    "coordinates": { "lat": 39.94829051193141, "lng": -105.35810848861102 },
-    "content": "<img style='height:80px;width:auto;' src='grPic.png'/><h3>Gross Reservoir</h3><h5>Capacity:&emsp;41,811 acre-ft<br>Spillway Elevation:&emsp;7282 ft.<br>Water Right Date:&emsp;May 10, 1945 </h5>"
-  },
-  {
     "name": "S. Bldr. Creek Div. near Eldorado",
     "abbrev": "BOSDELCO",
     "coordinates": { "lat": 39.932589, "lng": -105.30819 },
