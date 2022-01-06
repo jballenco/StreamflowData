@@ -7,12 +7,14 @@ request.open("GET", "gageDatav1.json", false);
 request.send(null);
 let gages = JSON.parse(request.responseText);
 
-let formatDate = function (t) {
-  moment(t).format("M/D/YY HH:mm");
-};
+function getCallQryStr(waterSource) {
+  return `https://dwr.state.co.us/Rest/GET/api/v2/administrativecalls/active/?format=json&dateFormat=spaceSepToMinutes&fields=dateTimeSet%2CdateTimeReleased%2CwaterSourceName%2ClocationStructureName%2CpriorityStructureName%2CpriorityAdminNumber%2CpriorityDate%2ClocationStructureLatitude%2ClocationStructureLongitude&waterSourceName=${waterSource}*`;
+}
 
-let returnParamName = (gageAbv) =>
-  gageAbv.includes("RESCO") ? "storage (AF)" : "flow (cfs)";
+function returnParamName(gageAbv) {
+  return gageAbv.includes("RESCO") ? "storage (AF)" : "flow (cfs)";
+}
+
 $.ajaxSetup({ async: true });
 for (let i = 1; i < gages.length; i++) {
   let connStr = `https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrytimeserieshour/?format=json&dateFormat=spaceSepToMinutes&fields=measDate%2CmeasValue&abbrev=${
@@ -26,7 +28,6 @@ for (let i = 1; i < gages.length; i++) {
     });
     gages[i]["labels"] = d.ResultList.map(function (e) {
       return e.measDate;
-      console.log(moment(e.measDate, "YYYY-MM-DD HH:mm"));
     });
     gages[i]["content"] = `<a href="${gages[i].link}" target="_blank">${
       gages[i].name
@@ -47,7 +48,18 @@ function initMap() {
     zoom: 8,
     gestureHandling: "greedy",
     center: { lat: 39.209275, lng: -105.268136 },
-    // mapTypeId: "terrain",
+    styles: [
+      {
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [
+          {
+            visibility: "off",
+          },
+        ],
+      },
+    ],
+    mapTypeId: "terrain",
   };
   map = new google.maps.Map(document.getElementById("map"), options);
 
@@ -93,14 +105,56 @@ function initMap() {
       map.setZoom(11);
     }
   );
+
+  let callArr = ["South Platte", "Colorado"];
+  let callDataArr = [];
+  $.ajaxSetup({ async: false });
+  for (let c = 0; c < callArr.length; c++) {
+    $.getJSON(getCallQryStr(callArr[c]), function (d) {
+      callDataArr.push(d.ResultList);
+    }).fail(function () {
+      console.log(`no data for ${callArr[c]}`);
+    });
+  }
+  console.log(callDataArr);
+  for (let i = 0; i < callDataArr.length; i++) {
+    for (let n = 0; n < callDataArr[i].length; n++) {
+      console.log(callDataArr[i][n]);
+      let contentString =
+        `<h2 style="font-size: 1em">${callDataArr[i][n].waterSourceName} CALL</h2>` +
+        `<h3 style="font-size: 0.875em">Location structure name:&emsp;${callDataArr[i][n].locationStructureName}<br>` +
+        `
+      Priority structure name:&emsp;${callDataArr[i][n].priorityStructureName}<br>` +
+        `Priority date:&emsp;${callDataArr[i][n].priorityDate}<br>` +
+        `Priority Admin. Number:&emsp;${callDataArr[i][n].priorityAdminNumber}<br>` +
+        `Date/time set:&emsp;${callDataArr[i][n].dateTimeSet}</h3>`;
+      let marker2 = new google.maps.Marker({
+        // postion: cLatLng,
+        position: new google.maps.LatLng(
+          callDataArr[i][n].locationStructureLatitude,
+          callDataArr[i][n].locationStructureLongitude
+        ),
+        map: map,
+      });
+
+      // marker2.setIcon("greenTriangle.png");
+      google.maps.event.addListener(marker2, "click", function () {
+        let infowindow = new google.maps.InfoWindow();
+        infowindow.setContent(contentString);
+        infowindow.open(map, marker2);
+      });
+      console.log(marker2);
+    }
+  }
+
   let request1 = new XMLHttpRequest();
   request1.open("GET", "waterFacts.json", false);
   request1.send(null);
   let wtrFacts = JSON.parse(request1.responseText);
   for (let i = 0; i < wtrFacts.length; i++) {
     let contentString =
-      `<h2>${wtrFacts[i].name}</h2>` +
-      `<h3>Capacity:&emsp;${wtrFacts[i].Capacity} acre-ft<br>` +
+      `<h2 style="font-size: 1em">${wtrFacts[i].name}</h2>` +
+      `<h3 style="font-size: 0.875em">Capacity:&emsp;${wtrFacts[i].Capacity} acre-ft<br>` +
       `
       Water Right Date:&emsp;${moment(
         wtrFacts[i].WaterRightDate,
@@ -112,6 +166,7 @@ function initMap() {
       position: wtrFacts[i].coordinates,
       map: map,
     });
+
     marker1.setIcon("folderIcon.png");
     google.maps.event.addListener(marker1, "click", function () {
       let infowindow = new google.maps.InfoWindow();
@@ -199,6 +254,9 @@ function drawChart(
       showTextEvery: 4,
       format: "M/d/yy HH:mm",
     },
+    // trendlines: {
+    //   0: {},
+    // },
   };
   let infoWindowNode = document.createElement("div");
   let node = document.createElement("div");
