@@ -16,7 +16,7 @@ function returnParamName(gageAbv) {
 }
 
 $.ajaxSetup({ async: true });
-for (let i = 1; i < gages.length; i++) {
+for (let i = 0; i < gages.length; i++) {
   let connStr = `https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrytimeserieshour/?format=json&dateFormat=spaceSepToMinutes&fields=measDate%2CmeasValue&abbrev=${
     gages[i].abbrev
   }&includeThirdParty=true&parameter=${
@@ -106,20 +106,26 @@ function initMap() {
     }
   );
 
-  let callArr = ["South Platte", "Colorado"];
+  let callArr = [
+    "South Platte",
+    "Colorado",
+    "Blue River",
+    "Fraser",
+    "South Boulder",
+    "Ralston",
+  ];
   let callDataArr = [];
   $.ajaxSetup({ async: false });
   for (let c = 0; c < callArr.length; c++) {
     $.getJSON(getCallQryStr(callArr[c]), function (d) {
       callDataArr.push(d.ResultList);
     }).fail(function () {
-      console.log(`no data for ${callArr[c]}`);
+      console.log(`no call data for ${callArr[c]}`);
     });
   }
-  console.log(callDataArr);
+
   for (let i = 0; i < callDataArr.length; i++) {
     for (let n = 0; n < callDataArr[i].length; n++) {
-      console.log(callDataArr[i][n]);
       let contentString =
         `<h2 style="font-size: 1em">${callDataArr[i][n].waterSourceName} CALL</h2>` +
         `<h3 style="font-size: 0.875em">Location structure name:&emsp;${callDataArr[i][n].locationStructureName}<br>` +
@@ -143,7 +149,6 @@ function initMap() {
         infowindow.setContent(contentString);
         infowindow.open(map, marker2);
       });
-      console.log(marker2);
     }
   }
 
