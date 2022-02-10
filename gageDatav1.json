@@ -304,5 +304,11 @@
     "abbrev": "WILDARCO",
     "coordinates": { "lat": 39.797199, "lng": -106.025655 },
     "link": "https://dwr.state.co.us/tools/stations/WILDARCO"
+  },
+  {
+    "name": "Fulton Ditch @ headgate nr. Thornton",
+    "abbrev": "FULDITCO",
+    "coordinates": { "lat": 39.878068, "lng": -104.902351 },
+    "link": "https://dwr.state.co.us/tools/stations/FULDITCO"
   }
 ]

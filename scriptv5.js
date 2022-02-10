@@ -11,43 +11,34 @@ function getCallQryStr(waterSource) {
   return `https://dwr.state.co.us/Rest/GET/api/v2/administrativecalls/active/?format=json&dateFormat=spaceSepToMinutes&fields=dateTimeSet%2CdateTimeReleased%2CwaterSourceName%2ClocationStructureName%2CpriorityStructureName%2CpriorityAdminNumber%2CpriorityDate%2ClocationStructureLatitude%2ClocationStructureLongitude&waterSourceName=${waterSource}*`;
 }
 
+function getGageQryStr(abv) {
+  return `https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrytimeserieshour/?format=json&dateFormat=spaceSepToMinutes&fields=measDate%2CmeasValue&abbrev=${abv}&includeThirdParty=true&parameter=${
+    abv.includes("RESCO") ? "STORAGE" : "DISCHRG"
+  }&startDate=${moment().subtract(2, "days").format("MM/DD/YYYY")}`;
+}
+
 function returnParamName(gageAbv) {
   return gageAbv.includes("RESCO") ? "storage (AF)" : "flow (cfs)";
 }
 
-$.ajaxSetup({ async: true });
-for (let i = 0; i < gages.length; i++) {
-  let connStr = `https://dwr.state.co.us/Rest/GET/api/v2/telemetrystations/telemetrytimeserieshour/?format=json&dateFormat=spaceSepToMinutes&fields=measDate%2CmeasValue&abbrev=${
-    gages[i].abbrev
-  }&includeThirdParty=true&parameter=${
-    gages[i].abbrev.includes("RESCO") ? "STORAGE" : "DISCHRG"
-  }&startDate=${moment().subtract(2, "days").format("MM/DD/YYYY")}`;
-  $.getJSON(connStr, function (d) {
-    gages[i]["data"] = d.ResultList.map(function (e) {
-      return e.measValue;
-    });
-    gages[i]["labels"] = d.ResultList.map(function (e) {
-      return e.measDate;
-    });
-    gages[i]["content"] = `<a href="${gages[i].link}" target="_blank">${
-      gages[i].name
-    }</a><h4>${moment(gages[i].labels[gages[i].labels.length - 1]).format(
-      "M/D/YY HH:mm"
-    )} </h4><h5>${returnParamName(gages[i].abbrev)}: ${
-      gages[i].data[gages[i].data.length - 1]
-    }</h5>`;
-  }).fail(function () {
-    gages[i][
-      "content"
-    ] = `<a href="${gages[i].link}" target="_blank">${gages[i].name}</a><h4>This gage may be seasonal or does not have current data</h4>`;
-  });
-}
-
 function initMap() {
   let options = {
-    zoom: 8,
+    zoom: 7,
+    controlSize: 20,
     gestureHandling: "greedy",
-    center: { lat: 39.209275, lng: -105.268136 },
+    center: { lat: 39.7238, lng: -105.268136 },
+    legend: {
+      position: "none",
+    },
+    zoomControl: true,
+    streetViewControl: false,
+    mapTypeControlOptions: {
+      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+    },
+    zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.SMALL,
+      position: google.maps.ControlPosition.LEFT_BOTTOM,
+    },
     styles: [
       {
         featureType: "poi",
@@ -62,6 +53,74 @@ function initMap() {
     mapTypeId: "terrain",
   };
   map = new google.maps.Map(document.getElementById("map"), options);
+
+  for (let i = 0; i < gages.length; i++) {
+    let marker = new google.maps.Marker({
+      position: gages[i].coordinates,
+      map: map,
+    });
+
+    if (gages[i].abbrev.includes("RESCO")) {
+      marker.setIcon("greenTriangle.png");
+    } else if (gages[i].abbrev.includes("WTRFAC")) {
+      marker.setIcon("folderIcon.png");
+    } else {
+      marker.setIcon("waterDrop.png");
+    }
+
+    $.getJSON(getGageQryStr(gages[i].abbrev), function (d) {
+      gages[i]["data"] = d.ResultList.map(function (e) {
+        return e.measValue;
+      });
+      gages[i]["labels"] = d.ResultList.map(function (e) {
+        return e.measDate;
+      });
+      gages[i]["content"] = `<a href="${gages[i].link}" target="_blank">${
+        gages[i].name
+      }</a><h4>${moment(gages[i].labels[gages[i].labels.length - 1]).format(
+        "M/D/YY HH:mm"
+      )} </h4><h5>${returnParamName(gages[i].abbrev)}: ${
+        gages[i].data[gages[i].data.length - 1]
+      }</h5>`;
+      google.maps.event.addListener(marker, "click", function () {
+        drawChart(
+          this,
+          gages[i].name,
+          gages[i].data,
+          gages[i].labels,
+          gages[i].content,
+          returnParamName(gages[i].abbrev)
+        );
+      });
+    }).fail(function () {
+      gages[i][
+        "content"
+      ] = `<a href="${gages[i].link}" target="_blank">${gages[i].name}</a><h4>This gage may be seasonal or does not have current data</h4>`;
+      google.maps.event.addListener(marker, "click", function () {
+        let infowindow = new google.maps.InfoWindow();
+        infowindow.setContent(gages[i].content);
+        infowindow.open(map, marker);
+      });
+    });
+  }
+  const icons = {
+    streamgage: {
+      name: "Streamgage",
+      icon: "waterDrop.png",
+    },
+    waterfact: {
+      name: "Reservoir Fact",
+      icon: "folderIcon.png",
+    },
+    rivercall: {
+      name: "River Call",
+      icon: "http://mt.googleapis.com/vt/icon/name=icons/spotlight/spotlight-poi.png",
+    },
+    reservoir: {
+      name: "Reservoir",
+      icon: "greenTriangle.png",
+    },
+  };
 
   google.maps.event.addDomListener(
     document.getElementById("SS"),
@@ -113,6 +172,7 @@ function initMap() {
     "Fraser",
     "South Boulder",
     "Ralston",
+    "Bear Creek",
   ];
   let callDataArr = [];
   $.ajaxSetup({ async: false });
@@ -179,37 +239,17 @@ function initMap() {
       infowindow.open(map, marker1);
     });
   }
-  for (let i = 0; i < gages.length; i++) {
-    let marker = new google.maps.Marker({
-      position: gages[i].coordinates,
-      map: map,
-    });
-    if (gages[i].abbrev.includes("RESCO")) {
-      marker.setIcon("greenTriangle.png");
-    } else if (gages[i].abbrev.includes("WTRFAC")) {
-      marker.setIcon("folderIcon.png");
-    } else {
-      marker.setIcon("waterDrop.png");
-    }
-    if (typeof gages[i].data !== "undefined") {
-      google.maps.event.addListener(marker, "click", function () {
-        drawChart(
-          this,
-          gages[i].name,
-          gages[i].data,
-          gages[i].labels,
-          gages[i].content,
-          returnParamName(gages[i].abbrev)
-        );
-      });
-    } else {
-      google.maps.event.addListener(marker, "click", function () {
-        let infowindow = new google.maps.InfoWindow();
-        infowindow.setContent(gages[i].content);
-        infowindow.open(map, marker);
-      });
-    }
+
+  const legend = document.getElementById("legend");
+  for (const key in icons) {
+    const type = icons[key];
+    const name = type.name;
+    const icon = type.icon;
+    const div = document.createElement("div");
+    div.innerHTML = '<img src="' + icon + '"> ' + name;
+    legend.appendChild(div);
   }
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 }
 
 function drawChart(
@@ -241,17 +281,16 @@ function drawChart(
         fontSize: 8,
       },
     },
+    legend: "none",
     chartArea: {
       width: "100%",
       height: "80%",
       top: "2%",
       left: "15%",
-      right: "15%",
+      right: "10%",
       bottom: "35%",
     },
-    legend: {
-      position: "none",
-    },
+
     hAxis: {
       textPosition: "out",
       slantedText: true,
@@ -278,4 +317,3 @@ function drawChart(
   });
 }
 google.load("visualization", "current", { packages: ["corechart", "line"] });
-// google.charts.setOnLoadCallback(drawChart);
