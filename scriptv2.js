@@ -75,13 +75,9 @@ function initMap() {
       gages[i]["labels"] = d.ResultList.map(function (e) {
         return e.measDate;
       });
-      gages[i]["content"] = `<a href="${gages[i].link}" target="_blank">${
-        gages[i].name
-      }</a><h4>${moment(gages[i].labels[gages[i].labels.length - 1]).format(
-        "M/D/YY HH:mm"
-      )} </h4><h5>${returnParamName(gages[i].abbrev)}: ${
-        gages[i].data[gages[i].data.length - 1]
-      }</h5>`;
+      gages[i][
+        "content"
+      ] = `<h2><a href="${gages[i].link}" target="_blank">${gages[i].name}</a></h2>`;
       google.maps.event.addListener(marker, "click", function () {
         drawChart(
           this,
